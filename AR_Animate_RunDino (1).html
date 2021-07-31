@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<!--Animate across a Sprite list of png pictures using an Array-->
+
+
+<html>
+<head>
+  <title>Animate Template</title>
+</head>
+<body>
+  <canvas id="canvas" width="640" height="480"></canvas>
+  <!--><canvas></canvas> -->
+  <script>
+    var canvas = document.getElementById("canvas");
+    //var canvas = document.querySelector('canvas');
+    var ctx = canvas.getContext("2d");
+    
+    canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+
+//create empty array
+var images = [];
+images.length = 8;
+
+//push the images into array
+
+for(var i = 1 ; i < images.length ; i++){
+    images[i] = new Image();
+    images[i].src = 'Run (' + i.toString() + ').png';
+}
+
+//loop and draw the images
+var i = 1;
+setInterval(function(){
+    i++;
+    if( i >= 8){
+        i = 1;
+    }
+    // redraw background for every sprite image
+    ctx.fillStyle = "skyblue";
+    ctx.fillRect (0, 0, canvas.width, canvas.height);
+    ctx.drawImage(images[i],50,50,250,250);
+},50)
+
+</script>
+</body>
+</html>
